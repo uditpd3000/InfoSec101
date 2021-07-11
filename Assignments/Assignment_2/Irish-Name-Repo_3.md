@@ -6,12 +6,21 @@ Challenge Page: [Irish-Name-Repo 3](http://jupiter.challenges.picoctf.org:29132)
 
 ## Walkthrough
 As mentioned in the hint, the password is encrypted. So i first looked for any key/hint but it was not there.
+
 Then i found out this. 
-<input type="hidden" name="debug" value="0"> in login.php.
+
+`<input type="hidden" name="debug" value="0">`
+
+in login.php.
+
 Here i changed the value of debug to "1".
+
 I tried the password `' or 1=1--` for which i got this SQL query as response
-SQL query: SELECT * FROM admin where password = '' be 1=1--'
+
+### SQL query: SELECT * FROM admin where password = '' be 1=1--' ###
+
 So here simple ROT13 was used to encode the password.
+
 Then i used `' be 1=1--` as password and yeah it worked.
    
 
